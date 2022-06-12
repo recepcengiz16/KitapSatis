@@ -1,0 +1,670 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA68728F-8C37-4F02-8745-0F6E386D676C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KitapSatis</RootNamespace>
+    <AssemblyName>KitapSatis</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Content\Admin.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\still.css" />
+    <Content Include="Global.asax" />
+    <Content Include="karma-master\blog.html" />
+    <Content Include="karma-master\cart.html" />
+    <Content Include="karma-master\category.html" />
+    <Content Include="karma-master\checkout.html" />
+    <Content Include="karma-master\confirmation.html" />
+    <Content Include="karma-master\contact.html" />
+    <Content Include="karma-master\contact_process.php" />
+    <Content Include="karma-master\css\availability-calendar.css" />
+    <Content Include="karma-master\css\bootstrap.css" />
+    <Content Include="karma-master\css\font-awesome.min.css" />
+    <Content Include="karma-master\css\ion.rangeSlider.css" />
+    <Content Include="karma-master\css\ion.rangeSlider.skinFlat.css" />
+    <Content Include="karma-master\css\jquerysctipttop.css" />
+    <Content Include="karma-master\css\linearicons.css" />
+    <Content Include="karma-master\css\magnific-popup.css" />
+    <Content Include="karma-master\css\main.css" />
+    <Content Include="karma-master\css\nice-select.css" />
+    <Content Include="karma-master\css\nouislider.min.css" />
+    <Content Include="karma-master\css\owl.carousel.css" />
+    <Content Include="karma-master\css\themify-icons.css" />
+    <Content Include="karma-master\elements.html" />
+    <Content Include="karma-master\fonts\fontawesome-webfont.svg" />
+    <Content Include="karma-master\fonts\Linearicons-Free.svg" />
+    <Content Include="karma-master\fonts\themify.svg" />
+    <Content Include="karma-master\img\banner2.png" />
+    <Content Include="karma-master\img\banner\banner-bg.jpg" />
+    <Content Include="karma-master\img\banner\banner-img.png" />
+    <Content Include="karma-master\img\banner\common-banner.jpg" />
+    <Content Include="karma-master\img\banner\next.png" />
+    <Content Include="karma-master\img\banner\prev.png" />
+    <Content Include="karma-master\img\blog\add.jpg" />
+    <Content Include="karma-master\img\blog\author.png" />
+    <Content Include="karma-master\img\blog\c1.jpg" />
+    <Content Include="karma-master\img\blog\c2.jpg" />
+    <Content Include="karma-master\img\blog\c3.jpg" />
+    <Content Include="karma-master\img\blog\c4.jpg" />
+    <Content Include="karma-master\img\blog\c5.jpg" />
+    <Content Include="karma-master\img\blog\c6.jpg" />
+    <Content Include="karma-master\img\blog\cat-post\cat-post-1.jpg" />
+    <Content Include="karma-master\img\blog\cat-post\cat-post-2.jpg" />
+    <Content Include="karma-master\img\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="karma-master\img\blog\causes\causes-1.jpg" />
+    <Content Include="karma-master\img\blog\causes\causes-2.jpg" />
+    <Content Include="karma-master\img\blog\causes\causes-3.jpg" />
+    <Content Include="karma-master\img\blog\feature-img1.jpg" />
+    <Content Include="karma-master\img\blog\latest-post\l-post-1.jpg" />
+    <Content Include="karma-master\img\blog\latest-post\l-post-2.jpg" />
+    <Content Include="karma-master\img\blog\latest-post\l-post-3.jpg" />
+    <Content Include="karma-master\img\blog\latest-post\l-post-4.jpg" />
+    <Content Include="karma-master\img\blog\main-blog\m-blog-1.jpg" />
+    <Content Include="karma-master\img\blog\main-blog\m-blog-2.jpg" />
+    <Content Include="karma-master\img\blog\main-blog\m-blog-3.jpg" />
+    <Content Include="karma-master\img\blog\main-blog\m-blog-4.jpg" />
+    <Content Include="karma-master\img\blog\main-blog\m-blog-5.jpg" />
+    <Content Include="karma-master\img\blog\next.jpg" />
+    <Content Include="karma-master\img\blog\popular-post\post1.jpg" />
+    <Content Include="karma-master\img\blog\popular-post\post2.jpg" />
+    <Content Include="karma-master\img\blog\popular-post\post3.jpg" />
+    <Content Include="karma-master\img\blog\popular-post\post4.jpg" />
+    <Content Include="karma-master\img\blog\post-img1.jpg" />
+    <Content Include="karma-master\img\blog\post-img2.jpg" />
+    <Content Include="karma-master\img\blog\prev.jpg" />
+    <Content Include="karma-master\img\brand\1.png" />
+    <Content Include="karma-master\img\brand\2.png" />
+    <Content Include="karma-master\img\brand\3.png" />
+    <Content Include="karma-master\img\brand\4.png" />
+    <Content Include="karma-master\img\brand\5.png" />
+    <Content Include="karma-master\img\cart.jpg" />
+    <Content Include="karma-master\img\category\c1.jpg" />
+    <Content Include="karma-master\img\category\c2.jpg" />
+    <Content Include="karma-master\img\category\c3.jpg" />
+    <Content Include="karma-master\img\category\c4.jpg" />
+    <Content Include="karma-master\img\category\c5.jpg" />
+    <Content Include="karma-master\img\category\s-p1.jpg" />
+    <Content Include="karma-master\img\elements\d.jpg" />
+    <Content Include="karma-master\img\elements\disabled-check.png" />
+    <Content Include="karma-master\img\elements\disabled-radio.png" />
+    <Content Include="karma-master\img\elements\f1.jpg" />
+    <Content Include="karma-master\img\elements\f2.jpg" />
+    <Content Include="karma-master\img\elements\f3.jpg" />
+    <Content Include="karma-master\img\elements\f4.jpg" />
+    <Content Include="karma-master\img\elements\f5.jpg" />
+    <Content Include="karma-master\img\elements\f6.jpg" />
+    <Content Include="karma-master\img\elements\f7.jpg" />
+    <Content Include="karma-master\img\elements\f8.jpg" />
+    <Content Include="karma-master\img\elements\g1.jpg" />
+    <Content Include="karma-master\img\elements\g2.jpg" />
+    <Content Include="karma-master\img\elements\g3.jpg" />
+    <Content Include="karma-master\img\elements\g4.jpg" />
+    <Content Include="karma-master\img\elements\g5.jpg" />
+    <Content Include="karma-master\img\elements\g6.jpg" />
+    <Content Include="karma-master\img\elements\g7.jpg" />
+    <Content Include="karma-master\img\elements\g8.jpg" />
+    <Content Include="karma-master\img\elements\primary-check.png" />
+    <Content Include="karma-master\img\elements\primary-radio.png" />
+    <Content Include="karma-master\img\elements\success-check.png" />
+    <Content Include="karma-master\img\elements\success-radio.png" />
+    <Content Include="karma-master\img\exclusive.jpg" />
+    <Content Include="karma-master\img\fav.png" />
+    <Content Include="karma-master\img\features\f-icon1.png" />
+    <Content Include="karma-master\img\features\f-icon2.png" />
+    <Content Include="karma-master\img\features\f-icon3.png" />
+    <Content Include="karma-master\img\features\f-icon4.png" />
+    <Content Include="karma-master\img\i1.jpg" />
+    <Content Include="karma-master\img\i2.jpg" />
+    <Content Include="karma-master\img\i3.jpg" />
+    <Content Include="karma-master\img\i4.jpg" />
+    <Content Include="karma-master\img\i5.jpg" />
+    <Content Include="karma-master\img\i6.jpg" />
+    <Content Include="karma-master\img\i7.jpg" />
+    <Content Include="karma-master\img\i8.jpg" />
+    <Content Include="karma-master\img\l1.jpg" />
+    <Content Include="karma-master\img\l2.jpg" />
+    <Content Include="karma-master\img\l3.jpg" />
+    <Content Include="karma-master\img\l4.jpg" />
+    <Content Include="karma-master\img\l5.jpg" />
+    <Content Include="karma-master\img\l6.jpg" />
+    <Content Include="karma-master\img\l7.jpg" />
+    <Content Include="karma-master\img\l8.jpg" />
+    <Content Include="karma-master\img\login.jpg" />
+    <Content Include="karma-master\img\logo.png" />
+    <Content Include="karma-master\img\men-bg.jpg" />
+    <Content Include="karma-master\img\ob1.jpg" />
+    <Content Include="karma-master\img\ob2.jpg" />
+    <Content Include="karma-master\img\ob3.jpg" />
+    <Content Include="karma-master\img\organic-food\b1.png" />
+    <Content Include="karma-master\img\organic-food\b2.png" />
+    <Content Include="karma-master\img\organic-food\b3.png" />
+    <Content Include="karma-master\img\organic-food\b4.png" />
+    <Content Include="karma-master\img\organic-food\c1.jpg" />
+    <Content Include="karma-master\img\organic-food\c2.jpg" />
+    <Content Include="karma-master\img\organic-food\c3.jpg" />
+    <Content Include="karma-master\img\organic-food\c4.jpg" />
+    <Content Include="karma-master\img\organic-food\cd-bg.jpg" />
+    <Content Include="karma-master\img\organic-food\cd.png" />
+    <Content Include="karma-master\img\organic-food\ci1.jpg" />
+    <Content Include="karma-master\img\organic-food\ci2.jpg" />
+    <Content Include="karma-master\img\organic-food\ci3.jpg" />
+    <Content Include="karma-master\img\organic-food\f1.jpg" />
+    <Content Include="karma-master\img\organic-food\f2.jpg" />
+    <Content Include="karma-master\img\organic-food\f3.jpg" />
+    <Content Include="karma-master\img\organic-food\f4.jpg" />
+    <Content Include="karma-master\img\organic-food\m1.png" />
+    <Content Include="karma-master\img\organic-food\mp1.jpg" />
+    <Content Include="karma-master\img\organic-food\mp10.jpg" />
+    <Content Include="karma-master\img\organic-food\mp11.jpg" />
+    <Content Include="karma-master\img\organic-food\mp12.jpg" />
+    <Content Include="karma-master\img\organic-food\mp2.jpg" />
+    <Content Include="karma-master\img\organic-food\mp3.jpg" />
+    <Content Include="karma-master\img\organic-food\mp4.jpg" />
+    <Content Include="karma-master\img\organic-food\mp5.jpg" />
+    <Content Include="karma-master\img\organic-food\mp6.jpg" />
+    <Content Include="karma-master\img\organic-food\mp7.jpg" />
+    <Content Include="karma-master\img\organic-food\mp8.jpg" />
+    <Content Include="karma-master\img\organic-food\mp9.jpg" />
+    <Content Include="karma-master\img\organic-food\ob1.jpg" />
+    <Content Include="karma-master\img\organic-food\ob2.jpg" />
+    <Content Include="karma-master\img\organic-food\ob3.jpg" />
+    <Content Include="karma-master\img\organic-food\p1.jpg" />
+    <Content Include="karma-master\img\organic-food\p2.jpg" />
+    <Content Include="karma-master\img\organic-food\p3.jpg" />
+    <Content Include="karma-master\img\organic-food\p4.jpg" />
+    <Content Include="karma-master\img\organic-food\p5.jpg" />
+    <Content Include="karma-master\img\organic-food\p6.jpg" />
+    <Content Include="karma-master\img\organic-food\p7.jpg" />
+    <Content Include="karma-master\img\organic-food\p8.jpg" />
+    <Content Include="karma-master\img\organic-food\pl1.jpg" />
+    <Content Include="karma-master\img\organic-food\pl2.jpg" />
+    <Content Include="karma-master\img\organic-food\pl3.jpg" />
+    <Content Include="karma-master\img\organic-food\pl4.jpg" />
+    <Content Include="karma-master\img\organic-food\pl5.jpg" />
+    <Content Include="karma-master\img\organic-food\pl6.jpg" />
+    <Content Include="karma-master\img\organic-food\pl7.jpg" />
+    <Content Include="karma-master\img\organic-food\pl8.jpg" />
+    <Content Include="karma-master\img\organic-food\pm.jpg" />
+    <Content Include="karma-master\img\organic-food\q1.jpg" />
+    <Content Include="karma-master\img\organic-food\u1.png" />
+    <Content Include="karma-master\img\organic-food\u2.png" />
+    <Content Include="karma-master\img\organic-food\u3.png" />
+    <Content Include="karma-master\img\product\card.jpg" />
+    <Content Include="karma-master\img\product\e-p1.png" />
+    <Content Include="karma-master\img\product\next.png" />
+    <Content Include="karma-master\img\product\p1.jpg" />
+    <Content Include="karma-master\img\product\p2.jpg" />
+    <Content Include="karma-master\img\product\p3.jpg" />
+    <Content Include="karma-master\img\product\p4.jpg" />
+    <Content Include="karma-master\img\product\p5.jpg" />
+    <Content Include="karma-master\img\product\p6.jpg" />
+    <Content Include="karma-master\img\product\p7.jpg" />
+    <Content Include="karma-master\img\product\p8.jpg" />
+    <Content Include="karma-master\img\product\prev.png" />
+    <Content Include="karma-master\img\product\review-1.png" />
+    <Content Include="karma-master\img\product\review-2.png" />
+    <Content Include="karma-master\img\product\review-3.png" />
+    <Content Include="karma-master\img\q1.jpg" />
+    <Content Include="karma-master\img\r1.jpg" />
+    <Content Include="karma-master\img\r10.jpg" />
+    <Content Include="karma-master\img\r11.jpg" />
+    <Content Include="karma-master\img\r12.jpg" />
+    <Content Include="karma-master\img\r2.jpg" />
+    <Content Include="karma-master\img\r3.jpg" />
+    <Content Include="karma-master\img\r4.jpg" />
+    <Content Include="karma-master\img\r5.jpg" />
+    <Content Include="karma-master\img\r6.jpg" />
+    <Content Include="karma-master\img\r7.jpg" />
+    <Content Include="karma-master\img\r8.jpg" />
+    <Content Include="karma-master\img\r9.jpg" />
+    <Content Include="karma-master\img\register.jpg" />
+    <Content Include="karma-master\img\sd\c1.jpg" />
+    <Content Include="karma-master\img\sd\c2.jpg" />
+    <Content Include="karma-master\img\sd\c3.jpg" />
+    <Content Include="karma-master\img\sd\c4.jpg" />
+    <Content Include="karma-master\img\sd\c5.jpg" />
+    <Content Include="karma-master\index.html" />
+    <Content Include="karma-master\js\countdown.js" />
+    <Content Include="karma-master\js\gmaps.min.js" />
+    <Content Include="karma-master\js\ion.rangeSlider.js" />
+    <Content Include="karma-master\js\jquery.ajaxchimp.min.js" />
+    <Content Include="karma-master\js\jquery.magnific-popup.min.js" />
+    <Content Include="karma-master\js\jquery.nice-select.min.js" />
+    <Content Include="karma-master\js\jquery.sticky.js" />
+    <Content Include="karma-master\js\main.js" />
+    <Content Include="karma-master\js\nouislider.min.js" />
+    <Content Include="karma-master\js\owl.carousel.min.js" />
+    <Content Include="karma-master\js\parallax.min.js" />
+    <Content Include="karma-master\js\vendor\bootstrap.min.js" />
+    <Content Include="karma-master\js\vendor\jquery-2.2.4.min.js" />
+    <Content Include="karma-master\js\vendor\popper.js" />
+    <Content Include="karma-master\Karma Shop-doc\css\font-awesome.min.css" />
+    <Content Include="karma-master\Karma Shop-doc\css\main.css" />
+    <Content Include="karma-master\Karma Shop-doc\css\normalize.min.css" />
+    <Content Include="karma-master\Karma Shop-doc\fonts\fontawesome-webfont.svg" />
+    <Content Include="karma-master\Karma Shop-doc\img\logo.png" />
+    <Content Include="karma-master\Karma Shop-doc\index.html" />
+    <Content Include="karma-master\Karma Shop-doc\js\custom.js" />
+    <Content Include="karma-master\Karma Shop-doc\js\jquery-1.11.0.min.js" />
+    <Content Include="karma-master\Karma Shop-doc\js\jquery.nav.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shAutoloader.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushAppleScript.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushAS3.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushBash.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushCpp.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushCSharp.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushCss.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushDelphi.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushDiff.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushErlang.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushGroovy.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushJava.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushJScript.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushPerl.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushPhp.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushPlain.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushPython.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushRuby.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushSass.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushScala.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushSql.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushVb.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shBrushXml.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shCore.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\scripts\shLegacy.js" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCore.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreDefault.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreDjango.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreEclipse.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreEmacs.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreFadeToGrey.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreMDUltra.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreMidnight.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shCoreRDark.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeDefault.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeDjango.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeEclipse.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeEmacs.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeMDUltra.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeMidnight.css" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="karma-master\login.html" />
+    <Content Include="karma-master\single-blog.html" />
+    <Content Include="karma-master\single-product.html" />
+    <Content Include="karma-master\tracking.html" />
+    <Content Include="KitapSatisDB.mdf" />
+    <Content Include="KitapSatisDB_log.ldf" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Tanitim\banner.jpg" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomePageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KategoriController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KitapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RolController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UyeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\YayinEviController.cs" />
+    <Compile Include="Areas\Admin\Controllers\YazarController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Filters\Auth.cs" />
+    <Compile Include="Filters\AuthAdmin.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrentSession.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\VMSiparisler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\SubCategories.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\SubCategoryCreate.cshtml" />
+    <Content Include="Areas\Admin\Views\Kategori\SubCategoryEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Rol\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Rol\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Rol\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Yazar\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Yazar\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Yazar\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\YayinEvi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\YayinEvi\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\YayinEvi\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Kitap\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Kitap\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Uye\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Uye\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Uye\Create.cshtml" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="karma-master\.DS_Store" />
+    <Content Include="karma-master\css\.DS_Store" />
+    <Content Include="karma-master\css\bootstrap.map" />
+    <Content Include="karma-master\css\main.css.map" />
+    <Content Include="karma-master\css\main.map" />
+    <Content Include="karma-master\fonts\fontawesome-webfont.eot" />
+    <Content Include="karma-master\fonts\fontawesome-webfont.ttf" />
+    <Content Include="karma-master\fonts\fontawesome-webfont.woff" />
+    <Content Include="karma-master\fonts\fontawesome-webfont.woff2" />
+    <Content Include="karma-master\fonts\FontAwesome.otf" />
+    <Content Include="karma-master\fonts\Linearicons-Free.eot" />
+    <Content Include="karma-master\fonts\Linearicons-Free.ttf" />
+    <Content Include="karma-master\fonts\Linearicons-Free.woff" />
+    <Content Include="karma-master\fonts\Linearicons-Free.woff2" />
+    <Content Include="karma-master\fonts\themify.eot" />
+    <Content Include="karma-master\fonts\themify.ttf" />
+    <Content Include="karma-master\fonts\themify.woff" />
+    <Content Include="karma-master\img\.DS_Store" />
+    <Content Include="karma-master\img\organic-food\.DS_Store" />
+    <Content Include="karma-master\js\.DS_Store" />
+    <Content Include="karma-master\Karma Shop-doc\.DS_Store" />
+    <Content Include="karma-master\Karma Shop-doc\css\_DS_Store" />
+    <Content Include="karma-master\Karma Shop-doc\fonts\fontawesome-webfont.eot" />
+    <Content Include="karma-master\Karma Shop-doc\fonts\fontawesome-webfont.ttf" />
+    <Content Include="karma-master\Karma Shop-doc\fonts\fontawesome-webfont.woff" />
+    <Content Include="karma-master\Karma Shop-doc\fonts\FontAwesome.otf" />
+    <Content Include="karma-master\Karma Shop-doc\fonts\_DS_Store" />
+    <Content Include="karma-master\Karma Shop-doc\js\_DS_Store" />
+    <Content Include="karma-master\Karma Shop-doc\syntax-highlighter\_DS_Store" />
+    <Content Include="karma-master\Karma Shop-doc\_DS_Store" />
+    <Content Include="karma-master\prepros-6.config" />
+    <Content Include="karma-master\scss\.DS_Store" />
+    <Content Include="karma-master\scss\main.scss" />
+    <Content Include="karma-master\scss\theme\_banner.scss" />
+    <Content Include="karma-master\scss\theme\_blog.scss" />
+    <Content Include="karma-master\scss\theme\_common.scss" />
+    <Content Include="karma-master\scss\theme\_contact.scss" />
+    <Content Include="karma-master\scss\theme\_elements.scss" />
+    <Content Include="karma-master\scss\theme\_footer.scss" />
+    <Content Include="karma-master\scss\theme\_header.scss" />
+    <Content Include="karma-master\scss\theme\_home.scss" />
+    <Content Include="karma-master\scss\theme\_mixins.scss" />
+    <Content Include="karma-master\scss\theme\_predefine.scss" />
+    <Content Include="karma-master\scss\theme\_product.scss" />
+    <Content Include="karma-master\scss\theme\_reset.scss" />
+    <Content Include="karma-master\scss\theme\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Uye\AdminList.cshtml" />
+    <Content Include="Areas\Admin\Views\HomePage\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Kitap\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Kitap\Details.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Authors.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\PublishingHomes.cshtml" />
+    <Content Include="Views\Member\Login.cshtml" />
+    <Content Include="Views\Member\Register.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Books.cshtml" />
+    <Content Include="Views\Member\Profil.cshtml" />
+    <Content Include="Views\Home\BookDetails.cshtml" />
+    <Content Include="Views\Member\Basket.cshtml" />
+    <Content Include="Views\Member\GiveOrder.cshtml" />
+    <Content Include="Views\Member\Orders.cshtml" />
+    <Content Include="Views\Member\OrderDetails.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="KitapResimleri\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{f8a3c1ed-2446-48cb-a3a2-dc1eaf65eb6f}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CORE\CORE.csproj">
+      <Project>{50a16fe0-70c4-4e81-93a1-7fd0f9c98209}</Project>
+      <Name>CORE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ENTITY\ENTITY.csproj">
+      <Project>{238829de-44c4-448b-b9a3-a848031a67f9}</Project>
+      <Name>ENTITY</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60850</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60850/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

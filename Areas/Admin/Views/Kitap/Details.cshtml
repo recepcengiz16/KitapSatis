@@ -1,0 +1,54 @@
+﻿@using ENTITY
+@model Kitap
+<p></p>
+<p></p>
+<p></p>
+
+<style>
+    .yazi{
+        font-size:16px;
+    }
+    label{
+        color:red;
+        font-weight:bold;
+    }
+</style>
+
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_Product_carousel">
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="~/KitapResimleri/@Model.Resim" alt="">
+                    </div>
+                    @*<div class="justify-content-center">
+                        <h1>@Model.KitapAdi</h1>
+                    </div>*@
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text yazi">
+                    <label>Kitap Adı:</label> <strong> @Model.KitapAdi </strong><br />
+                    <label>Yazar:</label> <strong>@Model.Yazar.YazarAdi</strong><br />
+                    <label>Yayınevi:</label> <strong>@Model.YayinEvi.YayinEviAdi</strong><br />
+                    <label>Kategori:</label> <strong>@Model.Kategori.KategoriAdi</strong><br />
+                    <label>Fiyat:</label> <strong>@Model.Fiyat ₺</strong><br />
+                    <label>Dil:</label> <strong>@Model.Dil</strong><br />
+                    <label>Yayın Tarihi:</label> <strong>@Model.YayinTarihi.ToShortDateString()</strong>
+                    <p></p>
+                    <p></p>
+                    <p>
+                        @Model.OzetBilgi
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+
+<p></p>
+<p></p>

@@ -1,0 +1,68 @@
+﻿@model IPagedList<ENTITY.Uye>
+@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Üye Listesi";
+}
+<p></p>
+<p></p>
+<p></p>
+<h2>Üye Listesi</h2>
+
+<p>
+    @Html.ActionLink("Admin Listesi", "AdminList", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover table-responsive-sm text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => ((ENTITY.Uye)model).UyeAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => ((ENTITY.Uye)model).UyeSoyadi)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => ((ENTITY.Uye)model).UyeEposta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => ((ENTITY.Uye)model).UyeTelefon)
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UyeAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UyeSoyadi)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UyeEposta)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UyeTelefon)
+            </td>
+            <!--<td>-->
+                @*@Html.ActionLink("Güncelle", "Edit", new { id=item.UyeID },new { @class="btn btn-warning" }) |*@
+                @*@Html.ActionLink("Sil", "Delete", new { id = item.UyeID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })*@
+           <!-- </td>-->
+        </tr>
+    }
+
+</table>
+<p></p>
+<p></p>
+<div class="text-center">
+    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Uye", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+</div>
+<p></p>
+<p></p>

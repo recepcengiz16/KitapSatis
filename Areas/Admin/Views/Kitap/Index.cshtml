@@ -1,0 +1,73 @@
+﻿@using ENTITY
+@model IPagedList<Kitap>
+@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Kitaplar";
+}
+
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Kitap Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kitap Ekle", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-hover table-responsive-sm text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => ((Kitap)model).KitapAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => ((Kitap)model).Kategori.KategoriAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => ((Kitap)model).Yazar.YazarAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => ((Kitap)model).YayinEvi.YayinEviAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => ((Kitap)model).Fiyat)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KitapAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yazar.YazarAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YayinEvi.YayinEviAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.KitapID }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.KitapID }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.KitapID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?');" })
+            </td>
+        </tr>
+    }
+
+</table>
+<p></p>
+<p></p>
+<div class="text-center">
+    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Kitap", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+</div>

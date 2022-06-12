@@ -1,0 +1,59 @@
+﻿@using ENTITY;
+@model List<AltKategori>
+
+@{
+    ViewBag.Title = "Alt Kategoriler";
+}
+
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Alt Kategori Listesi</h2>
+
+@if (Model.Count > 0)
+{
+    <p>
+        @Html.ActionLink("Alt Kategori Ekle", "SubCategoryCreate", new { id = Model.ElementAt(0).KategoriID }, new { @class = "btn btn-success" })
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Alt Kategori Ekle", "SubCategoryCreate", new { id = ViewBag.KategoriID }, new { @class = "btn btn-success" })
+    </p>
+}
+<table class="table table-bordered table-hover table-responsive-sm text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayName("Alt Kategori Adı")
+            </th>
+            <th>@Html.DisplayName("Kategori Adı")</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltKategoriAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Kategori.KategoriAdi)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "SubCategoryEdit", new { id = item.AltKategoriID }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Sil", "SubCategoryDelete", new { id = item.AltKategoriID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })
+            </td>
+        </tr>
+    }
+
+</table>
+<p></p>
+<div>
+    @Html.ActionLink("Kategori Listesine Dön", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+<p></p>
+<p></p>

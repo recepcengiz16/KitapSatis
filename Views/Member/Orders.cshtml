@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ENTITY.Siparis>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Sipariş</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/Home/Index">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+
+<p></p>
+<p></p>
+
+<section class="order_details section_gap">
+    <div class="container">
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Uye.UyeAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SiparisTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GenelTutar)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Uye.UyeAdi)  @Html.DisplayFor(model => item.Uye.UyeSoyadi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SiparisTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GenelTutar)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sipariş Detayları", "OrderDetails", new { id=item.SiparisID }, new { @class="btn btn-primary" }) 
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</section>
+
+<p></p>
+<p></p>
+
+
+        

@@ -1,0 +1,48 @@
+﻿@model IPagedList<ENTITY.Yazar>
+@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Yazarlar";
+}
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Yazar Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Yazar Ekle", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-hover table-responsive-sm text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => ((ENTITY.Yazar)model).YazarAdi)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.YazarAdi)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.YazarID }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.YazarID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })
+            </td>
+        </tr>
+    }
+
+</table>
+<p></p>
+<div class="text-center">
+    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Yazar", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+</div>
+<p></p>
+<p></p>

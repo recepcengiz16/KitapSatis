@@ -1,0 +1,63 @@
+﻿@model ENTITY.Uye
+@{
+    ViewBag.Title = "Kayıt Ol";
+}
+<p></p>
+<p></p>
+<section class="login_box_area section_gap">
+    <div class="container">
+
+        <div class="row">
+            <p></p>
+            <p></p>
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <img class="img-fluid" src="~/karma-master/img/register.jpg" alt="">
+                    <div class="hover">
+                        @*<h4>YENİ HESAP</h4>
+                            <p>Hayali Dostlar Kitabevine kayıt olun ve fırsatlarımızdan yararlanın.</p>
+                            <a class="primary-btn" href="registration.html">Hesap Oluştur</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h4>KAYIT OL</h4>
+                    <form class="row login_form" action="/Member/Register" method="post" id="contactForm" novalidate="novalidate">
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-12 form-group">
+                           @Html.TextBoxFor(m=>m.UyeAdi,new { @class="form-control", placeholder="Üye Adı" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.UyeSoyadi, new { @class = "form-control", placeholder = "Üye Soyadı" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.UyeKullaniciAdi, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.UyeSifre, new { @class = "form-control", placeholder = "Şifre" , type="password" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.UyeSifreTekrar, new { @class = "form-control", placeholder = "Şifre Tekrar", type="password" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.UyeEposta, new { @class = "form-control", placeholder = "E-posta" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextAreaFor(m => m.UyeAdres,3,10, new { @class = "form-control", placeholder = "Adres" , style="resize:none;"})
+                        </div>
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.UyeTelefon, new { @class = "form-control", placeholder = "Telefon", type="tel" })
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="primary-btn">Giriş</button>
+                            
+                            @*<a href="#">Forgot Password?</a>*@
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->

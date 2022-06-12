@@ -1,0 +1,57 @@
+﻿@using ENTITY.ViewObjects
+@model VMLoginUser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Areas/Admin/Content/Admin.css" />
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body id="LoginForm">
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <h1 class="form-heading">Giriş</h1>
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                       <p> @ViewBag.Mesaj</p>
+                        <h2>Admin Giriş</h2>
+                        <p>Kullanıcı Adı ve Şifrenizi giriniz</p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <form id="Login">
+
+                        <div class="form-group">
+
+
+                            @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control", placeholder = "Kullanıcı Adı giriniz" })
+
+                        </div>
+
+                        <div class="form-group">
+
+                            @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control", placeholder = "Şifre giriniz", type = "password" })
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Giriş</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+     }
+
+</body>
+</html>

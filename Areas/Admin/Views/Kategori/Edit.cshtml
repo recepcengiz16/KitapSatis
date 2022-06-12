@@ -1,0 +1,45 @@
+﻿@model ENTITY.Kategori
+
+@{
+    ViewBag.Title = "Güncelle";
+}
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Güncelleme Sayfası</h2>
+
+
+@using (Html.BeginForm("Edit", "Kategori", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.KategoriID)
+    <div class="form-horizontal">
+        <h4>Kategori Güncelle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.KategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KategoriAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Güncelle" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<p></p>
+<div>
+    @Html.ActionLink("Kategori Listesine Dön", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+<p></p>
+<p></p>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

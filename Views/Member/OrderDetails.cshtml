@@ -1,0 +1,70 @@
+﻿@using ENTITY
+@model List<SiparisDetay>
+@{
+    ViewBag.Title = "OrderDetails";
+}
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Sipariş</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/Home/Index">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Sipariş Detay</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<p></p>
+<!--================Order Details Area =================-->
+<section class="order_details section_gap">
+    <div class="container">
+        <h3 class="title_confirmation">Vermiş Olduğunuz Sipariş Detayları</h3>
+        <div class="row order_d_inner">
+           
+        </div>
+        <div class="order_details_table">
+            <h2>Sipariş Detayları</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">Birim Fiyat(₺)</th>
+                            <th scope="col">Adet</th>
+                            <th scope="col">Toplam Fiyat(₺)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <p>@item.Kitap.KitapAdi</p>
+                                </td>
+                                <td>
+                                    <p>@item.BirimFiyat (₺)</p>
+                                </td>
+                                <td>
+                                    <h5>x @item.KitapAdet</h5>
+                                </td>
+                                <td>
+                                    <p>@(item.KitapAdet*item.BirimFiyat) (₺)</p>
+                                </td>
+
+                            </tr>
+                        }
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Order Details Area =================-->
+<p></p>
+<p></p>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ENTITY.Rol>
+
+@{
+    ViewBag.Title = "Roller";
+}
+
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Rol Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Rol Ekle", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-hover table-responsive-sm text-center">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RolAdi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RolAdi)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.RolID }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.RolID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })
+            </td>
+        </tr>
+    }
+
+</table>
+<p></p>
+<p></p>

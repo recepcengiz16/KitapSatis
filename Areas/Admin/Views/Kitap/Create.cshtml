@@ -1,0 +1,191 @@
+﻿@model ENTITY.Kitap
+
+@{
+    ViewBag.Title = "Kitap Ekle";
+}
+
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Ekleme Sayfası</h2>
+
+
+@using (Html.BeginForm("Create","Kitap",FormMethod.Post,new { enctype="multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Kitap Ekle</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.KitapAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.KitapAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KitapAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Kategori.KategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.KategoriID, (SelectList)ViewBag.Kategoriler, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.KategoriID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AltKategoriID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                <select id="AltKategori" name="AltKategoriID" class="form-control">
+                </select>
+                @Html.ValidationMessageFor(model => model.AltKategoriID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Yazar.YazarAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.YazarID, (SelectList)ViewBag.Yazarlar, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.YazarID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YayinEvi.YayinEviAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.YayinEviID, (SelectList)ViewBag.YayinEvleri, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.YayinEviID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fiyat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Fiyat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fiyat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Resim, new { htmlAttributes = new { @class = "form-control" } })
+                Resim Yükle <input type="file" id="resimSecim" name="file" />
+                @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dil, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Dil, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Dil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YayinTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                <input type="date" class="form-control" name="YayinTarihi"/>
+                @*@Html.EditorFor(model => model.YayinTarihi, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.YayinTarihi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SayfaSayisi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.SayfaSayisi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SayfaSayisi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Agirlik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Agirlik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Agirlik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Adet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OzetBilgi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-9">
+                @Html.TextAreaFor(model => model.OzetBilgi, 12, 80, new { @class = "form-control", style = "resize:none;" })
+                @Html.ValidationMessageFor(model => model.OzetBilgi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<p></p>
+<div>
+    @Html.ActionLink("Kitap Listesine Dön", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+<p></p>
+<p></p>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    let kat = document.getElementById("KategoriID");
+    let alt = document.getElementById("AltKategori");
+
+    let resim = document.getElementById("Resim");
+    let file = document.getElementById("resimSecim");
+
+    file.addEventListener("change", function () {
+        resim.value = "";
+        /*resim.value = file.value;*/
+        resim.value = file.files[0].name;
+    });
+
+
+
+    kat.addEventListener("change", function () {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //console.log(xhr.responseText);
+
+                alt.innerHTML = "";
+
+                let myJSON = JSON.parse(xhr.responseText);
+                let data = Array.from(myJSON);
+
+                console.log(data);
+
+                for (var i in data) {
+                    let opt = document.createElement("option");
+                    opt.value = data[i].AltKategoriID;
+                    opt.innerText = data[i].AltKategoriAdi;
+                    alt.appendChild(opt);
+                }
+            }
+        }
+
+        xhr.open("GET", "http://localhost:60850/Admin/Kitap/SubCategories/" + kat.value, true);
+        xhr.send();
+    });
+
+
+</script>

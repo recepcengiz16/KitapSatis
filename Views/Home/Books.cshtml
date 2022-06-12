@@ -1,0 +1,148 @@
+﻿@using ENTITY
+@model IPagedList<Kitap>
+@using PagedList
+@using PagedList.Mvc
+@using KitapSatis.Models
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Kitaplar";
+}
+
+<style>
+    label{
+        color:#f81a1a;
+    }
+</style>
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Kitaplarımız</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/Home/Index">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/Home/Books">Kitaplarımız</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+            <div class="sidebar-categories">
+                <div class="head">Kategoriler</div>
+                <ul class="main-categories">
+                    <li class="main-nav-list">
+                        @foreach (var item in ViewBag.Kategoriler)
+                        {
+
+                            <a data-toggle="collapse" href="#collapse@(((Kategori)item).KategoriID)" aria-expanded="false" aria-controls="collapse@(((Kategori)item).KategoriID)">
+                                <span class="lnr lnr-arrow-right"></span>@(((Kategori)item).KategoriAdi)
+                            </a>
+                            <ul class="collapse" id="collapse@(((Kategori)item).KategoriID)" data-toggle="collapse" aria-expanded="false" aria-controls="collapse@(((Kategori)item).KategoriID)">
+                                @foreach (var alt in item.AltKategoriler)
+                                {
+                                    <li class="main-nav-list child"><a href="/Home/Books/@(((AltKategori)alt).AltKategoriID)">@(((AltKategori)alt).AltKategoriAdi)</a></li>
+                                }
+                            </ul>
+
+                        }
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-filter mt-50">
+                
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+
+            <!-- Start Best Seller -->
+            <section class="lattest-product-area pb-40 category-list">
+                <div class="row">
+                    <!-- single product -->
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-product">
+                                <img class="img-fluid" src="~/KitapResimleri/@item.Resim" alt="">
+                                <div class="product-details">
+                                    <strong>
+                                        <label>Kitap Adı:</label> @item.KitapAdi
+                                    </strong><br />
+                                    <strong>
+                                        <label>Yazar:</label> @item.Yazar.YazarAdi
+                                    </strong>
+                                    <div class="price">
+                                        <strong><label>Fiyatı:</label></strong> <h6>@item.Fiyat ₺</h6>
+                                        @*<h6 class="l-through">$210.00</h6>*@
+                                    </div>
+                                    <div class="prd-bottom">
+
+                                        @if (CurrentSession.User != null && CurrentSession.User.RolID == 2)
+                                        {
+                                            <a href="/Member/AddToBasket/@item.KitapID" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Sepete Ekle</p>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="" class="social-info" data-toggle="modal" data-target="#myModal">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Sepete Ekle</p>
+                                            </a>
+                                            <div class="modal fade" id="myModal">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Uyarı Mesajı</h4>
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            Üye girişi yapmadan sepete ekleyemezsin yeğenim :)
+                                                        </div>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        <a href="/Home/BookDetails/@item.KitapID" class="social-info">
+                                            <span class="lnr lnr-move"></span>
+                                            <p class="hover-text">Detaya Git</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </section>
+            <!-- End Best Seller -->
+            <!-- Start Filter Bar -->
+            @if (Model.Count > 0)
+            {
+                <div class="filter-bar d-flex flex-wrap align-items-center justify-content-center">
+
+                    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Books", "Home", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+                </div>
+            }
+            <!-- End Filter Bar -->
+        </div>
+    </div>
+</div>
+<p></p>
+<p></p>
+

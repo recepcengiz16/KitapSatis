@@ -1,0 +1,141 @@
+﻿@using ENTITY.ViewObjects
+@model List<VMSepetUrun>
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Sepet</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/Home/Index">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Sepet</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">Fiyat(₺)</th>
+                            <th scope="col">Adet</th>
+                            <th scope="col">Toplam(₺)</th>
+                            <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        @{ 
+                            decimal fiyat = 0;
+                            if (Model.Count>0)
+                            {
+                                for (int i = 0; i < Model.Count; i++)
+                                {
+                                    fiyat += Model[i].Adet * Model[i].Kitap.Fiyat;
+                                }
+                            }
+                        }
+                        @foreach (var item in Model)
+                        {
+                           
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img class="img-fluid" src="~/KitapResimleri/@item.Kitap.Resim" alt="" width="200" height="200">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@item.Kitap.KitapAdi</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 id="Fiyat">@item.Kitap.Fiyat</h5>
+                                </td>
+                                <td>
+                                    <div class="product_count">
+                                        @Html.HiddenFor(x => item.Kitap.KitapID)
+                                        <div class="product_count">
+                                            
+                                            <input type="text" name="qty" id="sst_@item.Kitap.KitapID" maxlength="12" value="@item.Adet"
+                                                   class="input-text qty" readonly>
+                                            <a href="/Member/UpdateBasket?id=@item.Kitap.KitapID&yon=1" @*class="increase items-count"*@>
+                                                @*<i class="lnr lnr-chevron-up"></i>*@
+                                                <i class="fa fa-plus-square"></i>
+                                            </a>
+                                            <a href="/Member/UpdateBasket?id=@item.Kitap.KitapID&yon=0" @*class="reduced items-count"*@>
+                                                @*<i class="lnr lnr-chevron-down"></i>*@
+                                                <i class="fa fa-minus-square"></i>
+                                            </a>
+                                        </div>
+
+                                       
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 id="Toplam">
+                                        @(item.Adet*item.Kitap.Fiyat)
+                                    </h5>
+                                </td>
+                                <td>
+                                    <a id="silbtn" onclick="sepettenSil()" name="@item.Kitap.KitapID" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                    @*<a href="/Member/DeleteFromBasket/@item.Kitap.KitapID" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>*@
+                                </td>
+                            </tr>
+                         }
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <h5>Genel Toplam</h5>
+                            </td>
+                            <td>
+                                <h5 id="GenelToplam">@fiyat</h5>
+                            </td>
+                        </tr>
+
+                        <tr class="out_button_area">
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a class="gray_btn" href="/Home/Books">Alışverişe Devam Et</a>
+                                    <a class="primary-btn" href="/Member/GiveOrder">Sipariş Ver</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->
+
+<script type="text/javascript">
+    function sepettenSil() {
+        let silbtn = document.getElementById("silbtn").name;
+        let xhr = new XMLHttpRequest();
+        //xhr.onreadystatechange = function () {
+        //    if (xhr.readyState == 4 && xhr.status==200) {
+
+        //    }
+        //}
+        xhr.open("GET", "https://localhost:60850/api/Member/DeleteFromBasket?id=" + silbtn, true);
+        xhr.send();
+    }
+</script>

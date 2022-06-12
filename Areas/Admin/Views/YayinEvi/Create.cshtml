@@ -1,0 +1,44 @@
+﻿@model ENTITY.YayinEvi
+
+@{
+    ViewBag.Title = "Yayın Evi Ekle";
+}
+<p></p>
+<p></p>
+<p></p>
+
+<h2>Ekleme Sayfası</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Yayın Evi Ekle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.YayinEviAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.YayinEviAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.YayinEviAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <p></p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<p></p>
+<div>
+    @Html.ActionLink("Yayınevi Listesine Dön", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+<p></p>
+<p></p>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

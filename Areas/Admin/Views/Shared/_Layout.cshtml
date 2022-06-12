@@ -1,0 +1,64 @@
+﻿@using KitapSatis.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Hayali Dostlar Kitabevi</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Hayali Dostlar Kitabevi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Kategori/Index">Kategoriler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Kitap/Index">Kitaplar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Rol/Index">Roller</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Uye/Index">Üyeler</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/YayinEvi/Index">Yayın Evleri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Yazar/Index">Yazarlar</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profil</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Admin/Uye/Edit/@CurrentSession.User.UyeID">Profil Bilgilerim</a></li>
+                            <li><a class="dropdown-item" href="/Admin/HomePage/LogOut">Çıkış Yap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                    
+                
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content col-md-9">
+        @RenderBody()
+
+       
+    </div>
+
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@model IPagedList<ENTITY.Yazar>
+@using PagedList
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Yazarlar";
+}
+<p></p>
+<p></p>
+<p></p>
+<section class="section_gap">
+    <div class="container">
+        <p></p>
+        <p></p>
+        <h2>Yazar Listesi</h2>
+
+        <table class="table table-bordered table-hover table-responsive-sm text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Yazarlar
+                        @*@Html.DisplayNameFor(model => ((ENTITY.Yazar)model).YazarAdi)*@
+                    </th>
+                    
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YazarAdi)
+                    </td>                   
+                </tr>
+            }
+
+        </table>
+
+        <div class="text-center">
+            @Html.PagedListPager(Model, _sayfaNo => Url.Action("Authors", "Home", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        </div>
+    </div>
+</section>
